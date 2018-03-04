@@ -1,32 +1,61 @@
-import click, requests, configparser
+import requests, click, configparser
 
-@click.command()
-@click.option('--add', default='',
-                help='Add the star')
-@click.argument('')
+session = requests.Session()
+session.headers = {'User-Agent': 'Python'}
 
-@click.option('--remove',
-                help='Remove the star')
+def token_auth(req):
+    config = configparser.ConfigParser()
+    with open('auth.cfg') as f:
+         config.read_file(f)
+    tk = config['github']['token']
+    req.headers['Authorization'] = 'token ' + tk
+    return req
 
-@click.option('--show',
-                help='Show repositories with/without your star')
+session.auth = token_auth
+r = session.get('https://api.github.com/user')
 
-#def token_auth(req):
-#    config = configparser.ConfigParser()
-#    with open('auth.cfg') as f:
-#         config.read_file(f)
-#    token = config['github']['token']
-#    req.headers['Authorization'] = 'token ' + token
-#    return req
+@click.group()
+def star():
+    pass
 
-def new_star(add):
-#    session = requests.Session()
-#    session.headers = {'User-Agent': 'Ajuska'}
-#    session.auth = token_auth
-#    add = session.get('https://api.github.com/Ajuska')
-#    add = session.put('https://api.github.com/user/starred/pyvec/naucse.python.cz')
-#    return add
-    click.echo('Star to {} added!' .format(add))
+@star.command()
+@click.argument('url')
+def new_star(url):
+    add = session.put('https://api.github.com/user/starred/' + url)
+    click.echo('Adding star to {}'.format(url))
+    return add
+
+
+@star.command()
+@click.argument('url')
+def remove_star(url):
+    remove = session.delete('https://api.github.com/user/starred/' + url)
+    click.echo('Removing star from {}'.format(url))
+    return remove
+
+@star.command()
+@click.argument('url')
+def show_stars(url):
+    link = session.get('https://api.github.com/user/starred/' + url)
+    if link.status_code == 204:
+        click.echo('Star is at {}'.format(url))
+        print('* ' + url)
+    else:
+        click.echo('Star is not at {}'.format(url))
+        print('  ' + url)
+
+# @click.command()
+# @click.option('--add', default='url',
+#                 help='Add the star')
+# @click.argument('')
+#
+# @click.option('--remove',
+#                 help='Remove the star')
+#
+# @click.option('--show',
+#                 help='Show repositories with/without your star')
+
 
 if __name__ == '__main__':
-    new_star()
+    #remove_star()
+    show_stars()

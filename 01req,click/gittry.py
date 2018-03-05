@@ -15,4 +15,4 @@ def add(files):
     for file in files:
         click.echo('Adding {}'.format(file))
 
-commit()
+git2()

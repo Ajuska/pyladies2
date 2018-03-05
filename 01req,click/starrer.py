@@ -12,7 +12,6 @@ def token_auth(req):
     return req
 
 session.auth = token_auth
-r = session.get('https://api.github.com/user')
 
 @click.group()
 def star():
@@ -20,42 +19,28 @@ def star():
 
 @star.command()
 @click.argument('url')
-def new_star(url):
-    add = session.put('https://api.github.com/user/starred/' + url)
+def add(url):
+    new = session.put('https://api.github.com/user/starred/' + url)
     click.echo('Adding star to {}'.format(url))
-    return add
+    return new
 
 
 @star.command()
 @click.argument('url')
-def remove_star(url):
+def remove(url):
     remove = session.delete('https://api.github.com/user/starred/' + url)
     click.echo('Removing star from {}'.format(url))
     return remove
 
 @star.command()
-@click.argument('url')
-def show_stars(url):
-    link = session.get('https://api.github.com/user/starred/' + url)
-    if link.status_code == 204:
-        click.echo('Star is at {}'.format(url))
-        print('* ' + url)
-    else:
-        click.echo('Star is not at {}'.format(url))
-        print('  ' + url)
-
-# @click.command()
-# @click.option('--add', default='url',
-#                 help='Add the star')
-# @click.argument('')
-#
-# @click.option('--remove',
-#                 help='Remove the star')
-#
-# @click.option('--show',
-#                 help='Show repositories with/without your star')
-
+@click.argument('urls', nargs=-1, required=True)
+def show(urls):
+    for url in urls:
+        link = session.get('https://api.github.com/user/starred/' + url)
+        if link.status_code == 204:
+            click.echo('* {}'.format(url))
+        else:
+            click.echo('  {}'.format(url))
 
 if __name__ == '__main__':
-    #remove_star()
-    show_stars()
+    star()

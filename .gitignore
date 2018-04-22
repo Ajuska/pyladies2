@@ -2,3 +2,4 @@
 __pycache__/
 auth.py
 auth.cfg
+/05scraping/__venv__/

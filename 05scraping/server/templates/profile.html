@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<dl>
+	<dt>Jméno</dt>
+	<dd>{{ person.name }}</dd>
+	<dt>Uživatelské jméno</dt>
+	<dd>{{ person.username }}</dd>
+	<dt>E-mail</dt>
+	<dd><a href="email:{{ person.email }}">{{ person.email }}</a></dd>
+	<dt>Telefon</dt>
+	<dd>{{ person.phone }}</dd>
+	<dt>Adresa</dt>
+	<dd><pre>{{ person.address }}</pre></dd>
+</dl>
+
+{% endblock %}

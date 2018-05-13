@@ -1,0 +1,31 @@
+https://gist.github.com/yaplik/b95fc8323b42d956da3e51148f3269c7
+
+VIRTUALNI PROSTREDI S KNIHOVNAMI PRO PRISSTUP DO DATABAZE
+python -m venv __venv__
+python -m pip install --upgrade
+python -m pip install pymongo faker flask flask-pymongo
+
+
+DATABAZE
+sudo dnf intall -y epel-release
+sudo dnf install mongodb mongodb-server
+sudo systemctl start mongod
+
+PRIPOJENI K DATABAZI
+mongo
+
+- mongo databaze neni relacni (strukturovana jako excel)
+- je to kolekce dokumentu (kolecke muze byt napriklad box, do ktereho se hazou papir, atd..)
+- databaze umoznuje mit nejen data, ale i indexy
+
+
+PRIKAZY NA DATABAZI
+
+ZOBRAZENI - FIND (db.****.count())
+NAJITI - FIND({}) (db.***.find({"phone": "123"}))
+HEZCI NAJITI - PRETTY (db.***.find({"phone": "123"}).pretty())
+UKAZANI ATRIBUTU - {"Name": 0} (db.***.find({"phone": "123"}, {"name": 0}).pretty())
+VLOZENI - INSERT ( db.****.insert())
+VYPSANI - SHOW TABLES
+SMAZANI VSEHO - DROP (db.***.drop())
+VYHLEDANI PARAMETRU - db.****. + press TAB

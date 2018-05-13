@@ -1,0 +1,18 @@
+<h1>Telefony</h1>
+
+<table>
+   <thead>
+      <th>ID</th>
+      <th>Jmeno</th>
+      <th>Telefon</th>
+   </thead>
+   <tbody>
+      {% for phone in phones %}
+      <tr>
+         <td>{{ phone._id }}</td>
+         <td>{{ phone.name }}</td>
+         <td>{{ phone.phone }}</td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>

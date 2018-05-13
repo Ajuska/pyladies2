@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vlozeni</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  </head>
+  <body>
+    <h3>Vloz novy zaznam</h3>
+    <form method="POST" action="/add">
+        <div class="form-group">
+            <label>Jmeno:</label>
+            <input type="text" name="jmeno">
+            <label>Telefon:</label>
+            <input type="int" name="telefon">
+            <input class="btn btn-primary" type="submit" value="Vlozit">
+        </div>
+    </from>
+    <br>
+    <a href="{{ url_for('index') }}"> Zpet na hlavni stranku </a>
+  </body>
+ </html>

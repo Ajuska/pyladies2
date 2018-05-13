@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vymazani zaznamu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <body>
+    <h3>Vymaz zaznam podle ID</h3>
+    <form method="POST" action="/erase">
+        <div class="form-group">
+            <label>ID:</label>
+            <input type="text" name="ID">
+            <input class="btn btn-primary" type="submit" value="Vymazat">
+        </div>
+    </from>
+    <br>
+    <a href="{{ url_for('index') }}"> Zpet na hlavni stranku </a>
+  </body>
+ </html>

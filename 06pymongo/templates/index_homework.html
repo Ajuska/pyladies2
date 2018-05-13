@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Hlavni stranka</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    </head>
+    <body>
+        <br>
+        <h3>Vyledat cislo</h3>
+        <form method="POST" action="/find">
+            <div class="form-group">
+                <label>Zadej jmeno</label>
+                <input type="text" name="zadani">
+                <input class="btn btn-primary" type="submit" value="Hledat">
+            </div>
+        </from>
+        <a href="{{ url_for('add') }}"> Vlozit novy zaznam </a>
+        <br>
+        <a href="{{ url_for('erase') }}"> Vymaz zaznam podle ID </a>
+        <br>
+        <br>
+        <h1>Telefony</h1>
+        <table>
+           <thead>
+              <th>ID</th>
+              <th>Jmeno</th>
+              <th>Telefon</th>
+           </thead>
+           <tbody>
+              {% for phone in phones %}
+              <tr>
+                 <td>{{ phone._id }}</td>
+                 <td>{{ phone.name }}</td>
+                 <td>{{ phone.phone }}</td>
+              </tr>
+              {% endfor %}
+           </tbody>
+        </table>
+    </body>
+</html>

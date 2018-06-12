@@ -1,0 +1,4 @@
+[
+  "test_print.py::test_greet",
+  "test_print.py::test_greet_input"
+]

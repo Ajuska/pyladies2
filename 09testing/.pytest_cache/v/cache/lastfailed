@@ -1,0 +1,6 @@
+{
+  "test_db.py::test_db": true,
+  "test_db.py::test_db2": true,
+  "test_db.py::test_db2[DEF]": true,
+  "test_isholiday.py::test_some_holidays[2017-7-8]": true
+}

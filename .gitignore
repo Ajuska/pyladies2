@@ -1,6 +1,4 @@
-/__venv__/
+__venv__/
 __pycache__/
 auth.py
 auth.cfg
-/05scraping/__venv__/
-/06pymongo/__venv__/

@@ -2,3 +2,10 @@ __venv__/
 __pycache__/
 auth.py
 auth.cfg
+pyworking-barvy/pictures
+pyworking-barvy/pyworking-materials
+pyworking-barvy/.ipynb_checkpoints
+pyworking-barvy/soubory
+10moduly/dist/
+10moduly/*.egg-info/
+10moduly/build/

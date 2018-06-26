@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('README.md') as file:
     readme = file.read()
@@ -12,11 +12,16 @@ setup(
     license='CC-0',
     # url='http://' --> domain of the project
     long_description=readme,
-    py_modules=['demo'],
+    packages=find_packages(),
     classifiers=[
-        'License :: CC0 1.0 Universal (CC0 1.0)',
-        'Programming Language :: Python :: 3.5',
-    ]
+        'License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication',
+        'Programming Language :: Python :: 3',
+    ],
+    install_requires=[
+        'pyglet',
+        'flask',
+        'click>=6',
+    ],
     zip_safe=False,
 )
 
